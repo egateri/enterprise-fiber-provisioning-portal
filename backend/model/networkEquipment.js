@@ -1,27 +1,27 @@
 
 const mongoose = require("mongoose");
 
-const neSchema = new mongoose.Schema({
+const networkequipmentSchema = new mongoose.Schema({
     name:{
         type:String,
-        require:true
+        required:true,
     },
     ip:{
         type:String, 
-        require:true
+        required:true,
     },
     model:{
         type:String,
-        require:true
+        required:true,
     },
     aggregatingPe:{
         type:String,
-        require:true
+        required:true,
     },
     peIp:{
         peIp1:{
             type:String,
-            require:true
+            required:true,
         },
         peIp2:{
             type:String,
@@ -39,7 +39,7 @@ const neSchema = new mongoose.Schema({
     },
     peInterface:{
         type:String,
-        require:true
+        required:true,
     },
     deviceType:{
         type:String,
@@ -51,9 +51,10 @@ const neSchema = new mongoose.Schema({
         default:Date.now()
     }
 
-})
-module.exports = mongoose.model('NetworkEquipment', neSchema)
+});
 
+const NetworkEquipment = mongoose.model('networkequipment',networkequipmentSchema);
 
+module.exports = NetworkEquipment;
 
 

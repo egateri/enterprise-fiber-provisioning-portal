@@ -2,7 +2,9 @@ const mongoose =require("mongoose");
 const MONGO_URI = process.env.MONGO_URI;
 
 const options = {
+    useNewUrlParser:true,
     family:4,
+    useUnifiedTopology:true
 };
 mongoose.connect(MONGO_URI,options);
 

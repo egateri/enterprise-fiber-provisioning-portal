@@ -1,26 +1,26 @@
 
 const mongoose = require("mongoose");
 
-const peSchema = new mongoose.Schema({
+const perouterSchema = new mongoose.Schema({
     name:{
         type:String,
-        require:true
+        required:true,
     },
     model:{
         type:String,
-        require:true
+        required:true,
     },
     peIp1:{
         type:String,
-        require:true
+        required:true,
     },
     peIp2:{
         type:String,
-        require:true
+        required:true,
     },
     peInterface1:{
         type:String,
-        require:true
+        required:true,
     },
     peInterface2:{
         type:String,
@@ -42,5 +42,8 @@ const peSchema = new mongoose.Schema({
         required:true,
         default:Date.now()
     }
-})
-module.exports = mongoose.model('PERouter', peSchema)
+});
+
+const PERouter = mongoose.model('perouter',perouterSchema);
+
+module.exports = PERouter;

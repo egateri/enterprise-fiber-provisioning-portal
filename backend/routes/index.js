@@ -1,4 +1,6 @@
 const User =require("../model/user");
+const NetworkEquipment =require("../model/networkEquipment");
+const PERouter =require("../model/providerEdgeRouter")
 const bcrypt=require("bcrypt");
 const jwt= require("jsonwebtoken");
 const express =require("express");
