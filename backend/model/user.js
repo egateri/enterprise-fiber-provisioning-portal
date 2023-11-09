@@ -1,14 +1,21 @@
 const mongoose = require('mongoose');
-const schema ={
-    //To be updated as discussed in standup on 8th Nov
+
+const userSchema ={
     first_name:{type:String, default:null, required :true},
     last_name:{type:String, default:null, required :true},
     email:{type:String, unique:true, required :true},
     password:{type:String,required :true},
-    token:{type:String}
+    roles:{
+        type:Array,
+        required :true
+    },
+
+    createdAt:{
+        type:mongoose.Schema.Types.Date,
+        required:true,
+        default:Date.now()
+    }
+    
 };
 
-const userSchema = new mongoose.Schema(schema);
-const User = mongoose.model('user',userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema)
