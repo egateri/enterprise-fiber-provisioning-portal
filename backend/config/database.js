@@ -7,7 +7,7 @@ const options = {
 mongoose.connect(MONGO_URI,options);
 
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open",()=> {console.log("Connected successfully");});
+db.on("error", console.error.bind(console, " Database connection error: "));
+db.once("open",()=> {console.log("Database Connected successfully");});
 
 module.exports = db;
