@@ -5,10 +5,6 @@ const userSchema ={
     last_name:{type:String, default:null, required :true},
     email:{type:String, unique:true, required :true},
     password:{type:String,required :true},
-    roles:{
-        type:Array,
-        required :true
-    },
 
     createdAt:{
         type:mongoose.Schema.Types.Date,
