@@ -3,6 +3,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const options = {
     family:4,
+    useUnifiedTopology:true
 };
 mongoose.connect(MONGO_URI,options);
 
