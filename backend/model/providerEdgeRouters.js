@@ -42,5 +42,8 @@ const peSchema = new mongoose.Schema({
         required:true,
         default:Date.now()
     }
-})
-module.exports = mongoose.model('PERouter', peSchema)
+});
+
+const PERouter = mongoose.model('perouter',peSchema);
+
+module.exports = PERouter;

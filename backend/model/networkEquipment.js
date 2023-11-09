@@ -51,9 +51,10 @@ const neSchema = new mongoose.Schema({
         default:Date.now()
     }
 
-})
-module.exports = mongoose.model('NetworkEquipment', neSchema)
+});
 
+const NetworkEquipment = mongoose.model('networequipment',neSchema);
 
+module.exports = NetworkEquipment;
 
 
