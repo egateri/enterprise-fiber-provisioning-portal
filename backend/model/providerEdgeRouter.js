@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 
-const peSchema = new mongoose.Schema({
+const perouterSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true,
@@ -44,6 +44,6 @@ const peSchema = new mongoose.Schema({
     }
 });
 
-const PERouter = mongoose.model('perouter',peSchema);
+const PERouter = mongoose.model('perouter',perouterSchema);
 
 module.exports = PERouter;

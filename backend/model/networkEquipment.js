@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 
-const neSchema = new mongoose.Schema({
+const networkequipmentSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true,
@@ -53,7 +53,7 @@ const neSchema = new mongoose.Schema({
 
 });
 
-const NetworkEquipment = mongoose.model('networkequipment',neSchema);
+const NetworkEquipment = mongoose.model('networkequipment',networkequipmentSchema);
 
 module.exports = NetworkEquipment;
 
