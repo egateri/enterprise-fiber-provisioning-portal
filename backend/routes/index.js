@@ -1,13 +1,12 @@
 const User =require("../model/user");
-const NetworkEquipment =require("../model/networkEquipment");
+const NE =require("../model/networkEquipment");
 const PERouter =require("../model/providerEdgeRouter")
 const bcrypt=require("bcrypt");
 const jwt= require("jsonwebtoken");
 const express =require("express");
 const {v4 : uuidv4} = require('uuid');
 const router =express.Router();
-const PERouter = require("../model/providerEdgeRouters");
-const NE = require("../model/networkEquipment");
+
 
 router.get("/",(req,res)=>{
     const timestamp =Date.now();
