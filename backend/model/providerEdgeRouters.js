@@ -3,33 +3,33 @@ const mongoose = require("mongoose");
 
 const peSchema = new mongoose.Schema({
     name:{
-        type:mongoose.Schema.Types.String,
+        type:String,
         required:true
     },
     model:{
-        type:mongoose.Schema.Types.String,
+        type:String,
         required:true
     },
     peIp1:{
-        type:mongoose.Schema.Types.String,
+        type:String,
         required:true
     },
     peIp2:{
-        type:mongoose.Schema.Types.String,
+        type:String,
         required:true
     },
     peInterface1:{
-        type:mongoose.Schema.Types.String,
+        type:String,
         required:true
     },
     peInterface2:{
-        type:mongoose.Schema.Types.String,
+        type:String,
     },
     peInterface3:{
-        type:mongoose.Schema.Types.String,
+        type:String,
     },
     deviceType:{
-        type:mongoose.Schema.Types.String,
+        type:String,
         required:true
     },
     mcLag:{
@@ -38,7 +38,7 @@ const peSchema = new mongoose.Schema({
         default:false
     },
     createdAt:{
-        type:mongoose.Schema.Types.Date,
+        type:Date,
         required:true,
         default:Date.now()
     }
