@@ -18,7 +18,7 @@ router.post("/add/pe",async(req,res)=>{
             "statusCode":201,
             "successMessage":"PE added successfully",
             "errorMessage":null,
-            "data":newPe
+            "data":null
     })
         
     } catch (error) {
