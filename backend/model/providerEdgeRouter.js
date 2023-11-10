@@ -35,10 +35,9 @@ const perouterSchema = new mongoose.Schema({
     mcLag:{
         type:Boolean,
         required:true,
-        default:false
     },
     createdAt:{
-        type:mongoose.Schema.Types.Date,
+        type:Date,
         required:true,
         default:Date.now()
     }

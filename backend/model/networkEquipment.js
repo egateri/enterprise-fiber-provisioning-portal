@@ -46,7 +46,7 @@ const networkequipmentSchema = new mongoose.Schema({
         required:true
     },
     createdAt:{
-        type:mongoose.Schema.Types.Date,
+        type:Date,
         required:true,
         default:Date.now()
     }
