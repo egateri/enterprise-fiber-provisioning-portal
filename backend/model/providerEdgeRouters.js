@@ -35,7 +35,6 @@ const peSchema = new mongoose.Schema({
     mcLag:{
         type:Boolean,
         required:true,
-        default:false
     },
     createdAt:{
         type:Date,
