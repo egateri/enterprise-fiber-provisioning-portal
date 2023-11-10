@@ -9,6 +9,7 @@ const schema ={
         type:Array,
         required :true
     },
+    token:{type:String},
 
     createdAt:{
         type:mongoose.Schema.Types.Date,
