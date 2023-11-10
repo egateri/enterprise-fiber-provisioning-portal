@@ -3,33 +3,33 @@ const mongoose = require("mongoose");
 
 const peSchema = new mongoose.Schema({
     name:{
-        type:String,
+        type:mongoose.Schema.Types.String,
         required:true
     },
     model:{
-        type:String,
+        type:mongoose.Schema.Types.String,
         required:true
     },
     peIp1:{
-        type:String,
+        type:mongoose.Schema.Types.String,
         required:true
     },
     peIp2:{
-        type:String,
+        type:mongoose.Schema.Types.String,
         required:true
     },
     peInterface1:{
-        type:String,
+        type:mongoose.Schema.Types.String,
         required:true
     },
     peInterface2:{
-        type:String,
+        type:mongoose.Schema.Types.String,
     },
     peInterface3:{
-        type:String,
+        type:mongoose.Schema.Types.String,
     },
     deviceType:{
-        type:String,
+        type:mongoose.Schema.Types.String,
         required:true
     },
     mcLag:{
