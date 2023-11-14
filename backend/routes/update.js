@@ -7,23 +7,34 @@ const verifyToken = require("../middleware/authentication");
 
 const router = express.Router();
 
-router.put("/update/:id",verifyToken,(req, res) => {
+router.put("/update/:id",verifyToken,async(req, res) => {
    
     const timestamp =Date.now();
     const requestId = uuidv4();
   
-    
-    console.log(req.params.id)
+   
+    const { first_name, last_name, password } = req.body;
+
+    if (!(first_name && last_name && password)) {
+      return res.status(400).json({
+         header:{
+                requestId:requestId,
+                status:400, 
+                 message:"bad request",
+                 timestamp:timestamp
+                },
+         body:{ message: "Missing inputs"}
+         });
+    }
+    const encryptedPassword = await bcrypt.hash(password, 10);
 
     User.updateOne(
       { _id: req.params.id },
       {
         $set: {
-          first_name: req.body.first_name,
-          last_name: req.body.last_name,
-          email: req.body.email,
-          roles:req.body.roles,
-          password: req.body.password,
+          first_name: first_name,
+          last_name: last_name,
+          password:  encryptedPassword,
         },
       },
       { upsert: true }
@@ -50,6 +61,7 @@ router.put("/update/:id",verifyToken,(req, res) => {
                 }, body:{success: false} });
         
       });
+     
   });
   
 
