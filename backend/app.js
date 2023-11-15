@@ -11,6 +11,8 @@ const peRouter = require('./routes/peRoutes')
 const neRouter = require('./routes/neRoutes');
 const express = require('express');
 const PORT = process.env.PORT||5500;
+const logger = require('./config/logger');
+
 const app = express();
 
 
