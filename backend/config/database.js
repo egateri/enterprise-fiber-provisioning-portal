@@ -1,5 +1,6 @@
 const mongoose =require("mongoose");
 const MONGO_URI = process.env.MONGO_URI;
+const logger = require("./logger")
 
 const options = {
     useNewUrlParser:true,
@@ -9,7 +10,7 @@ const options = {
 mongoose.connect(MONGO_URI,options);
 
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, " Database connection error: "));
-db.once("open",()=> {console.log("Database Connected successfully");});
+db.on("error", ()=>logger.info(`Database connection error {}`));
+db.once("open",()=> {logger.info("Database Connected successfully")});
 
 module.exports = db;

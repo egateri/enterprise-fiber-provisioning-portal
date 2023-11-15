@@ -29,5 +29,5 @@ app.use("/v1/users",deleteRouter);
 app.use("/v1/pes",peRouter);
 app.use("/v1/nes",neRouter);
 app.listen(PORT,()=>{
-    console.log(`Server running on port ${PORT}`);
+    logger.info(`Server running on port ${PORT}`);
 })
