@@ -9,6 +9,7 @@ const router = express.Router();
   router.delete("/delete/:id", verifyToken, async (req, res) => {
     const timestamp =Date.now();
     const requestId = uuidv4();
+    console.log(req.user)
    
     await User.deleteOne({ _id: req.params.id })
       .then(() => {
