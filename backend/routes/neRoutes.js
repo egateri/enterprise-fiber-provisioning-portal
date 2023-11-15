@@ -78,13 +78,53 @@ router.get('/:id',async (req, res) => {
     }
 
 })
-
 //get ne by name
 //get ne by ip
 
 //update ne
+router.put('/:id',async (req, res) =>{
+    const id = req.params.id
+    const updatedNE = req.body
+    try {
+        const foundNe = await NE.findById(id);
+        if(!foundNe) {
+            logger.info("Ne with id %s not found", id);
+            return res.status(404).json({"statusCode":404,"errorMessage":"user not found"})
+        };
+        const updateNE = await NE.findByIdAndUpdate(id,updatedNE)
+        logger.info("Ne %s details updated", updatedNE.name);
+        res.status(200).json({
+            "statusCode":200,
+            "successMessage":"Ne details updated successfully",
+            "errorMessage":null,
+            "data":null
+    })        
+    } catch (error) {
+        logger.info("error encountered updating NE details")
+        res.status(400).json({"error":error.name,"message":error.message})      
+    }
+
+})
 
 //delete ne
+router.delete('/:id',async (req, res) => {
+    const id = req.params.id;
+    const deleteNe = {deleted:true}
+    try {
+        await NE.findByIdAndUpdate({_id:id},deleteNe)
+        logger.info("Ne deleted");
+        res.status(200).json({
+            "statusCode":200,
+            "successMessage":"Ne deleted successfully",
+            "errorMessage":null,
+            "data":null
+    })
+        
+    } catch (error) {
+        logger.info("error encountered deleting NE")
+        res.status(400).json({"error":error.name,"message":error.message})  
+    }
+})
 
 
 
