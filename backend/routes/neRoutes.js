@@ -12,12 +12,14 @@ router.post('/',async(req,res) => {
     try {
         const foundNe = await NE.findOne({ip:ne.ip});
         if (foundNe){
+            logger.info("cannot add, Ne with IP => %s already exists",foundNe.ip);
             return res.status(400).json({
                 "statusCode":400,
                 "successMessage":null,
                 "errorMessage":"NE with provided IP already exists",
                 "data":null
         })
+         
         }
         const newNe = await NE.create(ne);
         logger.info('network equipment added successfully: %s - %s',ne.name, ne.ip)
@@ -35,6 +37,22 @@ router.post('/',async(req,res) => {
 });
 
 //get all nes
+
+router.get("/",async (req, res) => {
+    try {
+        const nes = await NE.find();
+        res.status(200).json({
+            "statusCode":200,
+            "successMessage":"NEs fetched successfully",
+            "errorMessage":null,
+            "data":nes
+    })
+        
+    } catch (error) {
+        res.status(400).json({"error":error.name,"message":error.message})        
+    }
+
+});
 
 //get ne by id
 //get ne by name
