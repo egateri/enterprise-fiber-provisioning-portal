@@ -41,11 +41,14 @@ router.post('/',async(req,res) => {
 router.get("/",async (req, res) => {
     try {
         const nes = await NE.find();
+        // console.log(nes);
+        const activeNes = nes.filter(ne => ne.deleted === false);
+        console.log(activeNes);
         res.status(200).json({
             "statusCode":200,
             "successMessage":"NEs fetched successfully",
             "errorMessage":null,
-            "data":nes
+            "data":activeNes
     })
         
     } catch (error) {
