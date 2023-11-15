@@ -37,27 +37,48 @@ router.post('/',async(req,res) => {
 });
 
 //get all nes
-
 router.get("/",async (req, res) => {
     try {
         const nes = await NE.find();
         // console.log(nes);
         const activeNes = nes.filter(ne => ne.deleted === false);
-        console.log(activeNes);
         res.status(200).json({
             "statusCode":200,
             "successMessage":"NEs fetched successfully",
             "errorMessage":null,
             "data":activeNes
     })
-        
+
     } catch (error) {
+        logger.info("error encountered whn fetching NEs")
         res.status(400).json({"error":error.name,"message":error.message})        
     }
 
 });
 
 //get ne by id
+router.get('/:id',async (req, res) => {
+    const { id } = req.params;
+    try {
+        const foundNe = await NE.findById(id);
+        if(!foundNe) {
+            logger.info("Ne with id %s not found", id);
+            return res.status(404).json({"statusCode":404,"errorMessage":"user not found"})
+        }; 
+        res.status(200).json({
+            "statusCode":200,
+            "successMessage":"NE fetched successfully",
+            "errorMessage":null,
+            "data":foundNe
+    })
+        
+    } catch (error) {
+        logger.info("error encountered when fetching NE")
+        res.status(400).json({"error":error.name,"message":error.message})        
+    }
+
+})
+
 //get ne by name
 //get ne by ip
 
