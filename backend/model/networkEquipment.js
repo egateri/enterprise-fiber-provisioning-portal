@@ -45,6 +45,11 @@ const networkequipmentSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    deleted:{
+        type:Boolean,
+        required:true,
+        default:false
+    },
     createdAt:{
         type:Date,
         required:true,

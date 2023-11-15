@@ -10,7 +10,9 @@ const options = {
 mongoose.connect(MONGO_URI,options);
 
 const db = mongoose.connection;
-db.on("error", ()=>logger.info(`Database connection error {}`));
+db.on("error", (error)=>logger.info(`Database connection error: %s`,error.message));
 db.once("open",()=> {logger.info("Database Connected successfully")});
+db.on("close", () => logger.info("Database connection closed"))
+
 
 module.exports = db;
