@@ -55,7 +55,7 @@ const Login =() => {
   return (
     <div>
     <div className="d-flex justify-content-right align-items-end">
-    <Link to="/signup" className="btn btn-default rounded-0 bg-white w-100 text-decoration-none float-end" > <strong>Register</strong></Link>
+    <Link to="/register" className="btn btn-default rounded-0 bg-white w-100 text-decoration-none float-end" > <strong>Register</strong></Link>
     </div>
       
       <div className="d-flex justify-content-center align-items-center bg-white vh-100">
