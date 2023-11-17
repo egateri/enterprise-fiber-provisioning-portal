@@ -23,16 +23,16 @@ const isValidIpAddress = (ip) => {
     try {
         for (const segment of parts) {
             if (parseInt(segment) > 255 || (segment.length > 1 && segment.startsWith('0'))) {
-                logger.info('An Octet value { %s } is greater than 255 or starts with 0.',segment);
+                logger.info('An Octet value { %s } is greater than 255 or starts with 0.', segment);
                 return false;
             }
         }
-} catch (error) {
-    return false;
-}
+    } catch (error) {
+        return false;
+    }
 
-return true;
-  }
+    return true;
+}
 
 
 module.exports = {
