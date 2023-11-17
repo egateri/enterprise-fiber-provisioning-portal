@@ -2,13 +2,13 @@ const express =  require("express")
 const NE =require("../model/networkEquipment");
 const logger = require("../config/logger");
 const { handleValidationErrors } = require("../middleware/validate")
-const { addNe,neId,updateNE } = require("../validations/neValidation")
+const { reqBody,neId,updateNE } = require("../validations/neValidation")
 
 const router =  express.Router();
 
 
 //add ne
-router.post('/',addNe,handleValidationErrors,async(req,res) => {
+router.post('/',reqBody,handleValidationErrors,async(req,res) => {
     const ne = req.body;
     // console.log(ne)
     try {
@@ -65,7 +65,7 @@ router.get('/:id',neId,handleValidationErrors,async (req, res) => {
         const foundNe = await NE.findById(id);
         if(!foundNe) {
             logger.info("Ne with id %s not found", id);
-            return res.status(404).json({statusCode:404,errorMessage:"user not found"})
+            return res.status(404).json({statusCode:404,errorMessage:"NE not found"})
         }; 
         res.status(200).json({
             statusCode:200,
@@ -91,7 +91,7 @@ router.put('/:id',updateNE,handleValidationErrors,async (req, res) =>{
         const foundNe = await NE.findById(id);
         if(!foundNe) {
             logger.info("Ne with id %s not found", id);
-            return res.status(404).json({statusCode:404,errorMessage:"user not found"})
+            return res.status(404).json({statusCode:404,errorMessage:"PE not found"})
         };
         const updateNE = await NE.findByIdAndUpdate(id,updatedNE,{ upsert: true })
         logger.info("Ne %s details updated", updatedNE.name);

@@ -7,7 +7,7 @@ const isValidMongoId = (value) => {
 
 const IPV4_REGEX = /^(?:\d{1,3}\.){3}\d{1,3}$/;
 
-const isValidInet4Address = (ip) => {
+const isValidIpAddress = (ip) => {
     if (ip === null) {
         logger.info('IP cannot be null');
         return false;
@@ -37,5 +37,5 @@ return true;
 
 module.exports = {
     isValidMongoId,
-    isValidInet4Address
+    isValidIpAddress
 }

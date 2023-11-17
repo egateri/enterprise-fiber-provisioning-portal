@@ -16,7 +16,6 @@ const perouterSchema = new mongoose.Schema({
     },
     peIp2:{
         type:String,
-        required:true,
     },
     peInterface1:{
         type:String,
@@ -35,6 +34,11 @@ const perouterSchema = new mongoose.Schema({
     mcLag:{
         type:Boolean,
         required:true,
+    },
+    deleted:{
+        type:Boolean,
+        required:true,
+        default:false
     },
     createdAt:{
         type:Date,
