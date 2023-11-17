@@ -1,14 +1,14 @@
 const express =  require("express")
 const NE =require("../model/networkEquipment");
 const logger = require("../config/logger");
-const { handleValidationErrors,validate } = require("../middleware/validate")
+const { handleValidationErrors } = require("../middleware/validate")
 const { addNe,neId,updateNE } = require("../validations/neValidation")
 
 const router =  express.Router();
 
 
 //add ne
-router.post('/',addNe,validate(addNe),async(req,res) => {
+router.post('/',addNe,handleValidationErrors,async(req,res) => {
     const ne = req.body;
     // console.log(ne)
     try {
