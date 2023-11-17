@@ -1,12 +1,14 @@
 const express =  require("express")
 const NE =require("../model/networkEquipment");
 const logger = require("../config/logger");
+const { handleValidationErrors,validate } = require("../middleware/validate")
+const { addNe,neId,updateNE } = require("../validations/neValidation")
 
 const router =  express.Router();
 
 
 //add ne
-router.post('/',async(req,res) => {
+router.post('/',addNe,validate(addNe),async(req,res) => {
     const ne = req.body;
     // console.log(ne)
     try {
@@ -57,7 +59,7 @@ router.get("/",async (req, res) => {
 });
 
 //get ne by id
-router.get('/:id',async (req, res) => {
+router.get('/:id',neId,handleValidationErrors,async (req, res) => {
     const { id } = req.params;
     try {
         const foundNe = await NE.findById(id);
@@ -82,7 +84,7 @@ router.get('/:id',async (req, res) => {
 //get ne by ip
 
 //update ne
-router.put('/:id',async (req, res) =>{
+router.put('/:id',updateNE,handleValidationErrors,async (req, res) =>{
     const id = req.params.id
     const updatedNE = req.body
     try {
@@ -107,7 +109,7 @@ router.put('/:id',async (req, res) =>{
 })
 
 //delete ne
-router.delete('/:id',async (req, res) => {
+router.delete('/:id',neId,handleValidationErrors,async (req, res) => {
     const id = req.params.id;
     const deleteNe = {deleted:true}
     try {
