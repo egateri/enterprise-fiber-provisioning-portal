@@ -47,7 +47,7 @@ const Register = () => {
   return (
     <div>
       <div className="d-flex justify-content-right align-items-end">
-    <Link to="/signup" className="btn btn-default rounded-0 bg-white w-100 text-decoration-none float-end" > <strong>Register</strong></Link>
+    <Link to="/login" className="btn btn-default rounded-0 bg-white w-100 text-decoration-none float-end" > <strong>Login</strong></Link>
     </div>
       <div className="d-flex justify-content-center align-items-center bg-white vh-100">
         <div className="bg-white p-3 rounded">
