@@ -2,7 +2,7 @@ const Header = () => {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/home">
             Home
           </a>
           <button
@@ -24,7 +24,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/login">
+                <a className="nav-link" href="/">
                   Login
                 </a>
               </li>
