@@ -25,7 +25,7 @@ const Register = () => {
         if (res?.status === 201) {
           localStorage.setItem("app_token",res?.data?.body?.token);
           localStorage.setItem("username",res?.data?.body?.first_name);
-          navigate("/login");
+          navigate("/");
         }
       })
       .catch((error) => {
