@@ -3,10 +3,11 @@ const NE = require("../model/networkEquipment");
 const logger = require("../config/logger");
 const { handleValidationErrors } = require("../middleware/validate")
 const { reqBody, neId, updateNE } = require("../validations/neValidation")
+const  verifyToken = require("../middleware/authentication")
 
 const router = express.Router();
 
-
+router.use(verifyToken)
 //add ne
 router.post('/', reqBody, handleValidationErrors, async (req, res) => {
     const ne = req.body;
