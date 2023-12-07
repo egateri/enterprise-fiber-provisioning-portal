@@ -3,8 +3,11 @@ const PE = require("../model/providerEdgeRouter");
 const logger = require("../config/logger");
 const { reqBody, peId, updatePE } = require("../validations/peValidation");
 const { handleValidationErrors } = require("../middleware/validate");
+const  verifyToken = require("../middleware/authentication")
 
 const router = express.Router();
+
+router.use(verifyToken);
 
 //add PE
 router.post("/", reqBody, handleValidationErrors, async (req, res) => {
