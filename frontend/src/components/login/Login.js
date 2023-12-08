@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link} from "react-router-dom";
+import Home from "../home/Home";
 import axios from "axios";
 const Login =() => {
   
   const [errorMessage, setErrorMessage] = useState("");
+  const [success, setSuccess] = useState(false);
   const [values, setValues] = useState({ email: "",password: "" });
-  const navigate = useNavigate();
+
 
   const handleInput = (event) => {
 
@@ -22,7 +24,9 @@ const Login =() => {
         if (res?.status ===200) {
           localStorage.setItem("app_token",res?.data?.body?.token);
           localStorage.setItem("username",res?.data?.body?.first_name);
-          navigate("/home");
+          localStorage.setItem("email",res?.data?.body?.email);
+          setSuccess(true);
+        
            } 
       
       })
@@ -54,9 +58,10 @@ const Login =() => {
   };
   return (
     <div>
-    <div className="d-flex justify-content-right align-items-end">
-    <Link to="/register" className="btn btn-default rounded-0 bg-white w-100 text-decoration-none float-end" > <strong>Register</strong></Link>
-    </div>
+      {success?
+      <Home />:(
+        <div>
+    
       
       <div className="d-flex justify-content-center align-items-center bg-white vh-100">
      
@@ -72,6 +77,7 @@ const Login =() => {
                 onChange={handleInput}
                 name="email"
                 className="form-control rounded-0 "
+                autocomplete="off"
                 required
               />
             </div>
@@ -91,11 +97,27 @@ const Login =() => {
             <button type="submit" className="btn btn-success w-100 rounded-0">
               <strong>Login</strong>
             </button>
-            <div className="alert alert-warning mb-3" > {errorMessage}</div>
-           
+            {errorMessage?
+            
+              <div className="alert alert-danger p-2 mb-2 mt-2" > {errorMessage}</div>
+              :
+              <div></div>
+            }
+            
+            <div className="p-5 mb-2 mt-2">
+            <p>Don't have an account? Register below</p>
+            <Link
+              to="/register"
+              className="btn btn-default border rounded-0 bg-light w-100 text-decoration-none"
+            >
+              <strong>Register</strong>
+            </Link>
+            </div>
           </form>
         </div>
       </div>
+      </div>
+)}
     </div>
   );
 }
