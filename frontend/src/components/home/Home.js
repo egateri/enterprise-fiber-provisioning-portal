@@ -7,7 +7,7 @@ const Home = () => {
 
   const name = localStorage.getItem("username");
   const token = localStorage.getItem("app_token");
-  console.log(name);
+  
   return (
     <div>
       {token ? (
