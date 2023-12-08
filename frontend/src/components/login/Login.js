@@ -65,7 +65,7 @@ const Login = () => {
                     onChange={handleInput}
                     name="email"
                     className="form-control rounded-0 "
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                   />
                 </div>
