@@ -23,8 +23,8 @@ const Register = () => {
       })
       .then((res) => {
         if (res?.status === 201) {
-          localStorage.setItem("app_token",res?.data?.body?.token);
-          localStorage.setItem("username",res?.data?.body?.first_name);
+          localStorage.setItem("app_token", res?.data?.body?.token);
+          localStorage.setItem("username", res?.data?.body?.first_name);
           navigate("/");
         }
       })
@@ -32,23 +32,17 @@ const Register = () => {
         console.log(error);
         if (error?.response?.status === 400) {
           setErrorMessage("All inputs are required");
-        } 
-        else if (error?.response?.status === 409) {
+        } else if (error?.response?.status === 409) {
           setErrorMessage("user already exists");
-        } 
-        else if (error?.response?.status === 500) {
+        } else if (error?.response?.status === 500) {
           setErrorMessage("Internal server error");
-        }
-        else {
+        } else {
           setErrorMessage("other Errors");
         }
       });
   };
   return (
     <div>
-      <div className="d-flex justify-content-right align-items-end">
-    <Link to="/" className="btn btn-default rounded-0 bg-white w-100 text-decoration-none float-end" > <strong>Login</strong></Link>
-    </div>
       <div className="d-flex justify-content-center align-items-center bg-white vh-100">
         <div className="bg-white p-3 rounded">
           <h2>Sign Up:</h2>
@@ -107,8 +101,24 @@ const Register = () => {
             <button type="submit" className="btn btn-success w-100 rounded-0">
               <strong>Sign Up</strong>
             </button>
-            <div className="alert alert-warning mb-3"> {errorMessage}</div>
 
+            {errorMessage ? (
+              <div className="alert alert-danger p-2 mb-2 mt-2">
+                {" "}
+                {errorMessage}
+              </div>
+            ) : (
+              <div></div>
+            )}
+            <div className="p-5 mb-2 mt-2">
+              <p>Already have an account? Login below</p>
+              <Link
+                to="/"
+                className="btn btn-default border rounded-0 bg-light w-100"
+              >
+                <strong>Login</strong>
+              </Link>
+            </div>
           </form>
         </div>
       </div>

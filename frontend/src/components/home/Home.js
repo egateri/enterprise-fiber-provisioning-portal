@@ -1,19 +1,25 @@
 import React from "react";
 import Header from "../header/Header";
+// eslint-disable-next-line
+import Login from "../login/Login";
 
 const Home = () => {
-   
+
   const name = localStorage.getItem("username");
-//   const token = localStorage.getItem("app_token");
+  const token = localStorage.getItem("app_token");
   
- 
   return (
     <div>
-      <Header />
-
-      <h2>Welcome Home:{name}</h2>
-    
-   
+      {token ? (
+        <>
+          <Header />
+          <h2>Welcome {name} !</h2>
+          <h2>You have successfully logged into Enterprise Provisioning portal.</h2>
+        </>
+      ) : (
+        // eslint-disable-next-line
+        <Login />
+      )}
     </div>
   );
 };
