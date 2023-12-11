@@ -8,6 +8,7 @@ const Login = () => {
   const [values, setValues] = useState({ email: "", password: "" });
 
   const handleInput = (event) => {
+    event.preventDefault();
     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
   const handleSubmit = (event) => {
@@ -50,8 +51,6 @@ const Login = () => {
             <div className="bg-white p-3 rounded">
               <h2>Login:</h2>
               <form
-                action=""
-                method=""
                 autoComplete="off"
                 onSubmit={handleSubmit}
               >
