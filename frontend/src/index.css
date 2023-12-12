@@ -41,6 +41,21 @@ h2{
     padding: 20px 0px 0px 0px;
     font-size: 1.4em;
 }
+#errmsg{
+    position:relative;
+    margin-left:30px;
+    width: 420px;
+    height: 40px;
+    padding: 7px;
+    text-align: center;
+    border: 1px solid red; 
+    color:red;
+    background: transparent;
+}
+.errmsgp {
+    padding-bottom: 10px;
+
+}
 /* general style of the input field */
 .inputbox{
     position: relative;
@@ -55,8 +70,8 @@ h2{
 /* styling the fom labels and placing them well in the input field */
 .inputbox label {
     position: absolute;
-    left:5px;
-    top:50%;
+    left:6px;
+    top:45%;
     transform:translateY(-38%);
     color:#506352;
     font-size: 1em;
@@ -71,7 +86,7 @@ h2{
     border: none;
     font-size: 1em;
     padding: 10px 5px 10px 5px;
-    /* color: #506352;     */
+    color: #0e0f0e;    
 }
 /* styling the icons on the imput fields */
 .inputbox ion-icon{

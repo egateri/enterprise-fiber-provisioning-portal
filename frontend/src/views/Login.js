@@ -29,14 +29,16 @@ function Login() {
       })
       .catch((error) => {
         if (error.response) {
-            setErrorMessage(error.response?.data?.body?.message)            
-          } else if (error.request) {
-            console.log('Error:',error.message)
-            setErrorMessage("Internal server error");
-          } else {
-            setErrorMessage("An error ocurred when processing your request...contact your administrator");        
-            console.log('Error:', error.message);
-          }
+          setErrorMessage(error.response?.data?.body?.message);
+        } else if (error.request) {
+          console.log("Error:", error.message);
+          setErrorMessage("Internal server error");
+        } else {
+          setErrorMessage(
+            "An error ocurred when processing your request...contact your administrator"
+          );
+          console.log("Error:", error.message);
+        }
       });
   };
 
@@ -52,7 +54,7 @@ function Login() {
                 <h2>Sign in</h2>
                 <p id="enttiltle">Enterprise Provisioning Portal</p>
                 {errorMessage ? (
-                  <div className="alert alert-danger p-2 mb-2 mt-2 alert-dismissible fade show">
+                  <div class="alert alert-light"id='errmsg' role="alert">
                     {errorMessage}
                   </div>
                 ) : (
