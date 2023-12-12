@@ -28,79 +28,78 @@ function Login() {
         }
       })
       .catch((error) => {
-        console.log(error);
-        if (error.response?.status === 400) {
-          setErrorMessage("All inputs required");
-        } else if (error.response?.status === 404) {
-          setErrorMessage("User does not exists");
-        } else if (error.response?.status === 500) {
-          setErrorMessage("Internal server error");
-        } else if (error.response?.status === 401) {
-          setErrorMessage("Email or Password does not match");
-        } else {
-          setErrorMessage("other errors");
-        }
+        if (error.response) {
+            setErrorMessage(error.response?.data?.body?.message)            
+          } else if (error.request) {
+            console.log('Error:',error.message)
+            setErrorMessage("Internal server error");
+          } else {
+            setErrorMessage("An error ocurred when processing your request...contact your administrator");        
+            console.log('Error:', error.message);
+          }
       });
   };
 
   return (
     <>
-    {
-        success === true  ? < Home /> :(<section>
-            <div className="form-box">
-              <div className="form-value">
-                <form onSubmit={handleSubmit} autoComplete="off">
-                  <h2>Sign in</h2>
-                  <p id="enttiltle">Enterprise Provisioning Portal</p>
-                  {errorMessage ? (
-                    <div className="alert alert-danger p-2 mb-2 mt-2">
-                      {errorMessage}
-                    </div>
-                  ) : (
-                    <div></div>
-                  )}
-                  <div className="inputbox">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input
-                      onChange={handleInput}
-                      className="emailinput"
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                    />
-                    <label htmlFor="email">Email</label>
+      {success === true ? (
+        <Home />
+      ) : (
+        <section>
+          <div className="form-box">
+            <div className="form-value">
+              <form onSubmit={handleSubmit} autoComplete="off">
+                <h2>Sign in</h2>
+                <p id="enttiltle">Enterprise Provisioning Portal</p>
+                {errorMessage ? (
+                  <div className="alert alert-danger p-2 mb-2 mt-2 alert-dismissible fade show">
+                    {errorMessage}
                   </div>
-                  <div className="inputbox">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input
-                      onChange={handleInput}
-                      className="passinput"
-                      type="password"
-                      id="password"
-                      name="password"
-                      required
-                    />
-                    <label htmlFor="password">Password</label>
-                  </div>
-      
-                  <div className="remember">
-                    <label htmlFor="">
-                      <input id="finput" type="checkbox" name="" />
-                      &ensp;Remember me
-                    </label>
-                  </div>
-                  <button type="submit" className="login-btn">
-                    Login
-                  </button>
-                  <div className="tesversion">
-                    <p>TES Provisioning Portal v1.1</p>
-                  </div>
-                </form>
-              </div>
+                ) : (
+                  <div></div>
+                )}
+                <div className="inputbox">
+                  <ion-icon name="mail-outline"></ion-icon>
+                  <input
+                    onChange={handleInput}
+                    className="emailinput"
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                  />
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className="inputbox">
+                  <ion-icon name="lock-closed-outline"></ion-icon>
+                  <input
+                    onChange={handleInput}
+                    className="passinput"
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                  <label htmlFor="password">Password</label>
+                </div>
+
+                <div className="remember">
+                  <label htmlFor="">
+                    <input id="finput" type="checkbox" name="" />
+                    &ensp;Remember me
+                  </label>
+                </div>
+                <button type="submit" className="login-btn">
+                  Login
+                </button>
+                <div className="tesversion">
+                  <p>TES Provisioning Portal v1.1</p>
+                </div>
+              </form>
             </div>
-          </section>)
-    }
+          </div>
+        </section>
+      )}
     </>
   );
 }
