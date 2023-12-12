@@ -1,30 +1,11 @@
 import React from "react";
-import Header from "../header/Header";
-import Login from "../../views/Login";
-// eslint-disable-next-line
-// import Login from "../login/Login";#
-
+import GuestLayout from "../GuestLayout";
+import DefaultLayout from "../DefaultLayout";
 
 const Home = () => {
-
-  const name = localStorage.getItem("username");
   const token = localStorage.getItem("app_token");
-  
-  return (
-    <div>
-      {token ? (
-        <>
-          <Header />
-          <h2>Welcome {name} !</h2>
-          <h2>You have successfully logged into Enterprise Provisioning portal.</h2>
-        </>
-      ) : (
-        // eslint-disable-next-line
-        // <Login />
-        <Login />
-      )}
-    </div>
-  );
+
+  return <>{token ? <DefaultLayout /> : <GuestLayout />}</>;
 };
 
 export default Home;
