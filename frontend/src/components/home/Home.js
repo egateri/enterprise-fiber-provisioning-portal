@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "../header/Header";
+import Login from "../../views/Login";
 // eslint-disable-next-line
-import Login from "../login/Login";
+// import Login from "../login/Login";#
+
 
 const Home = () => {
 
@@ -18,6 +20,7 @@ const Home = () => {
         </>
       ) : (
         // eslint-disable-next-line
+        // <Login />
         <Login />
       )}
     </div>

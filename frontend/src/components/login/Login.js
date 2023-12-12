@@ -13,7 +13,6 @@ const Login = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-
     axios
       .post(process.env.REACT_APP_BACKEND_URL + "/v1/users/login", values, {
         Headers: { "Content-Type": "application/json; charset=utf-8" },
