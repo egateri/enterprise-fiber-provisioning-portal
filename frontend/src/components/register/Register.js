@@ -113,7 +113,7 @@ const Register = () => {
             <div className="p-5 mb-2 mt-2">
               <p>Already have an account? Login below</p>
               <Link
-                to="/"
+                to="/login"
                 className="btn btn-default border rounded-0 bg-light w-100"
               >
                 <strong>Login</strong>

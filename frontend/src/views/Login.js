@@ -66,6 +66,7 @@ function Login() {
                     type="email"
                     id="email"
                     name="email"
+                    placeholder=""
                     required
                   />
                   <label htmlFor="email">Email</label>
@@ -78,6 +79,7 @@ function Login() {
                     type="password"
                     id="password"
                     name="password"
+                    placeholder=""
                     required
                   />
                   <label htmlFor="password">Password</label>

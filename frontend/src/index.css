@@ -20,7 +20,7 @@ section{
 .form-box{
     position: relative;
     width: 520px;
-    height: 570px;
+    height: 500px;
     background: transparent;
     border:3px solid #cccacb;
     border-radius: 20px;
@@ -45,7 +45,7 @@ h2{
 .inputbox{
     position: relative;
     margin:30px;
-    width: 400px;
+    width: 420px;
     border: 0.5px solid #cccacb;
     border-radius: 10px;    
     border-bottom: 2px solid #506352;
@@ -69,9 +69,9 @@ h2{
     width: 100%;
     background: transparent;
     border: none;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 10px 5px 10px 5px;
-    color: #506352;    
+    /* color: #506352;     */
 }
 /* styling the icons on the imput fields */
 .inputbox ion-icon{
@@ -93,12 +93,20 @@ h2{
  }
 
   /* this makes email and password label move when focused */
-  input:valid ~ label, 
-  input:focus ~ label{
+
+
+  input:valid ~ label ,
+  input:focus ~ label,
+  input:not(:placeholder-shown):not(:focus):invalid ~ label
+  {
   top: -5px;
   font-size:.9em ;
   background: #f5f5f5;
   }
+
+
+
+
 
 .remember{
     margin: -15px 0 15px;
