@@ -8,11 +8,11 @@ const Login = () => {
   const [values, setValues] = useState({ email: "", password: "" });
 
   const handleInput = (event) => {
+    event.preventDefault();
     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-
     axios
       .post(process.env.REACT_APP_BACKEND_URL + "/v1/users/login", values, {
         Headers: { "Content-Type": "application/json; charset=utf-8" },
@@ -50,8 +50,6 @@ const Login = () => {
             <div className="bg-white p-3 rounded">
               <h2>Login:</h2>
               <form
-                action=""
-                method=""
                 autoComplete="off"
                 onSubmit={handleSubmit}
               >
