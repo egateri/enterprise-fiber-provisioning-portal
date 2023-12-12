@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   const email = localStorage.getItem("email");
   const handleClick = () => {
@@ -7,9 +9,7 @@ const Header = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-        <a className="navbar-brand" href="/">
-          Home
-        </a>
+        <Link to="/" className="navbar-brand">Home </Link>
         <button
           className="navbar-toggler"
           type="button"
